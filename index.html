@@ -2,37 +2,31 @@
 <html lang="mr">
 <head>
 <meta charset="UTF-8">
-<title>दुर्ग संवर्धन अभियान नोंद तपशील</title>
+<title>दुर्ग संवर्धन अहवाल</title>
 
 <style>
 body{
     font-family: Arial;
-    background:#f4f4f4;
-    padding:20px;
+    font-size:14px;
+    background:#ffffff;
+    margin:20px;
 }
 
 .container{
-    background:white;
-    padding:25px;
-    border-radius:10px;
-    max-width:1000px;
+    max-width:950px;
     margin:auto;
 }
 
-h1,h2{
+h2{
     text-align:center;
-}
-
-input, textarea{
-    width:100%;
-    padding:8px;
-    margin:5px 0 15px 0;
+    font-size:18px;
+    margin-bottom:15px;
 }
 
 table{
     width:100%;
     border-collapse:collapse;
-    margin-bottom:20px;
+    margin-bottom:15px;
 }
 
 table, th, td{
@@ -40,27 +34,29 @@ table, th, td{
 }
 
 th, td{
-    padding:8px;
-    text-align:center;
+    padding:6px;
+    text-align:left;
 }
 
-.checkbox-group{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
+input, select, textarea{
+    width:100%;
+    border:none;
+    outline:none;
+    font-size:14px;
+}
+
+textarea{
+    resize:none;
+    height:50px;
 }
 
 button{
-    background:green;
+    background:black;
     color:white;
-    padding:10px 20px;
+    padding:6px 15px;
     border:none;
     cursor:pointer;
-    border-radius:5px;
-}
-
-button:hover{
-    background:darkgreen;
+    font-size:14px;
 }
 </style>
 </head>
@@ -69,94 +65,102 @@ button:hover{
 
 <div class="container">
 
-<h1>दुर्ग संवर्धन अभियान नोंद तपशील</h1>
+<h2>दुर्ग संवर्धन अभियान अहवाल</h2>
 
-<label>किल्ल्याची प्राथमिक माहिती</label>
-
-<label>किल्ल्याचे नाव:</label>
-<input type="text">
-
-<label>तालुका:</label>
-<input type="text">
-
-<label>जिल्हा:</label>
-<input type="text">
-<h3>जवळील दळणवळण साधने</h3>
-
-<label><input type="checkbox"> बस स्टँड</label><br>
-<label><input type="checkbox"> खाजगी वाहतूक</label><br>
-<label><input type="checkbox"> रेल्वे स्टेशन</label><br>
-<label>किल्ल्यावर देव/मंदिर आहे का? कोणते?</label>
-<input type="text">
-
-<label>आयुर्वेदिक वनस्पती:</label>
-<textarea rows="3"></textarea>
-
-
-<h2>गावाची माहिती</h2>
-
-<label>किल्ल्यावर वस्ती आहे का?</label>
-<input type="text">
-
-<label>गावाचे नाव:</label>
-<input type="text">
-
-<label>लोकसंख्या:</label>
-<input type="text">
-
-
-<h2>संपर्क माहिती</h2>
+<form id="durgForm">
 
 <table>
+
 <tr>
-<th>संपर्क व्यक्ती</th>
-<th>पूर्ण नाव</th>
-<th>मोबाईल नं.</th>
+<td>किल्ल्याचे नाव</td>
+<td><input type="text" id="killa"></td>
 </tr>
 
-<tr><td>स्थानिक संपर्क</td><td><input type="text"></td><td><input type="text"></td></tr>
-<tr><td>सरपंच</td><td><input type="text"></td><td><input type="text"></td></tr>
-<tr><td>ग्रामसेवक</td><td><input type="text"></td><td><input type="text"></td></tr>
-<tr><td>डॉक्टर/वैद्य</td><td><input type="text"></td><td><input type="text"></td></tr>
-<tr><td>शिक्षक</td><td><input type="text"></td><td><input type="text"></td></tr>
-<tr><td>प्रगत शेतकरी</td><td><input type="text"></td><td><input type="text"></td></tr>
-<tr><td>अभ्यासक</td><td><input type="text"></td><td><input type="text"></td></tr>
+<tr>
+<td>तालुका</td>
+<td><input type="text" id="taluka"></td>
+</tr>
+
+<tr>
+<td>जिल्हा</td>
+<td><input type="text" id="jilha"></td>
+</tr>
+
+<tr>
+<td>जवळचे गाव</td>
+<td><input type="text" id="gav"></td>
+</tr>
+
+<tr>
+<td>वस्ती आहे का?</td>
+<td>
+<select id="vasti">
+<option>होय</option>
+<option>नाही</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td>पाण्याचा स्रोत</td>
+<td>
+<select id="pani">
+<option>नदी</option>
+<option>विहीर</option>
+<option>तलाव</option>
+<option>बोअर</option>
+<option>काळवा</option>
+<option>बंधारा</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td>ऐतिहासिक माहिती</td>
+<td><textarea id="itihas"></textarea></td>
+</tr>
+
 </table>
 
+<button type="button" onclick="saveData()">जतन करा</button>
 
-<h2>विस्तृत माहिती</h2>
-
-<label>पीक/शेती माहिती:</label>
-<textarea rows="3"></textarea>
-
-<label>वनस्पती / झाडे:</label>
-<textarea rows="3"></textarea>
-
-<label>प्राणी:</label>
-<textarea rows="3"></textarea>
-
-<label>पाणी स्रोत:</label>
-
-<div class="checkbox-group">
-<label><input type="checkbox"> नदी</label>
-<label><input type="checkbox"> विहीर</label>
-<label><input type="checkbox"> बोअर</label>
-<label><input type="checkbox"> तलाव</label>
-<label><input type="checkbox"> कालवा</label>
-<label><input type="checkbox"> बंधारा</label>
-</div>
+</form>
 
 <br>
 
-<label>ऐतिहासिक माहिती:</label>
-<textarea rows="5"></textarea>
+<h3>नोंदी</h3>
 
-<br><br>
-
-<button type="submit">माहिती साठवा</button>
+<table id="dataTable">
+<tr>
+<th>किल्ला</th>
+<th>तालुका</th>
+<th>जिल्हा</th>
+<th>गाव</th>
+<th>वस्ती</th>
+<th>पाणी</th>
+<th>इतिहास</th>
+</tr>
+</table>
 
 </div>
 
+<script>
+function saveData(){
+
+var table = document.getElementById("dataTable");
+var row = table.insertRow();
+
+row.insertCell(0).innerHTML = document.getElementById("killa").value;
+row.insertCell(1).innerHTML = document.getElementById("taluka").value;
+row.insertCell(2).innerHTML = document.getElementById("jilha").value;
+row.insertCell(3).innerHTML = document.getElementById("gav").value;
+row.insertCell(4).innerHTML = document.getElementById("vasti").value;
+row.insertCell(5).innerHTML = document.getElementById("pani").value;
+row.insertCell(6).innerHTML = document.getElementById("itihas").value;
+
+document.getElementById("durgForm").reset();
+}
+</script>
+
 </body>
 </html>
-
