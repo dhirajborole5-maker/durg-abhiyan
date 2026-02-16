@@ -2,52 +2,46 @@
 <html lang="mr">
 <head>
 <meta charset="UTF-8">
-<title>दुर्ग संवर्धन अहवाल</title>
+<title>दुर्ग संवर्धन अभियान अहवाल</title>
 
 <style>
 body{
-    font-family: Arial;
-    font-size:12px;
-    background:#ffffff;
-    margin:15px;
+    font-family: "Times New Roman", serif;
+    font-size:13px;
+    margin:30px;
+    background:#fff;
 }
 
 .container{
-    max-width:950px;
+    max-width:800px;
     margin:auto;
 }
 
 h2{
     text-align:center;
-    font-size:15px;
-    margin-bottom:15px;
+    font-size:18px;
+    margin-bottom:5px;
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-bottom:15px;
+.subtitle{
+    text-align:center;
+    margin-bottom:20px;
 }
 
-table, th, td{
-    border:1px solid black;
-}
-
-th, td{
-    padding:4px;
-    text-align:left;
+label{
+    font-weight:bold;
 }
 
 input, select, textarea{
     width:100%;
-    border:none;
-    outline:none;
-    font-size:14px;
+    padding:5px;
+    margin-bottom:10px;
+    font-size:13px;
+    font-family:"Times New Roman", serif;
 }
 
 textarea{
-    resize:none;
-    height:50px;
+    height:70px;
 }
 
 button{
@@ -56,7 +50,14 @@ button{
     padding:6px 15px;
     border:none;
     cursor:pointer;
-    font-size:14px;
+    font-size:13px;
+}
+
+.report{
+    margin-top:30px;
+    padding-top:20px;
+    border-top:1px solid black;
+    line-height:1.8;
 }
 </style>
 </head>
@@ -65,98 +66,78 @@ button{
 
 <div class="container">
 
-<h2>दुर्ग संवर्धन अभियान अहवाल</h2>
+<h2>दुर्ग संवर्धन अभियान</h2>
+<div class="subtitle">प्राथमिक माहिती अहवाल</div>
 
 <form id="durgForm">
 
-<table>
+<label>किल्ल्याचे नाव</label>
+<input type="text" id="killa">
 
-<tr>
-<td>किल्ल्याचे नाव</td>
-<td><input type="text" id="killa"></td>
-</tr>
+<label>तालुका</label>
+<input type="text" id="taluka">
 
-<tr>
-<td>तालुका</td>
-<td><input type="text" id="taluka"></td>
-</tr>
+<label>जिल्हा</label>
+<input type="text" id="jilha">
 
-<tr>
-<td>जिल्हा</td>
-<td><input type="text" id="jilha"></td>
-</tr>
+<label>जवळचे गाव</label>
+<input type="text" id="gav">
 
-<tr>
-<td>जवळचे गाव</td>
-<td><input type="text" id="gav"></td>
-</tr>
-
-<tr>
-<td>वस्ती आहे का?</td>
-<td>
+<label>वस्ती आहे का?</label>
 <select id="vasti">
 <option>होय</option>
 <option>नाही</option>
 </select>
-</td>
-</tr>
 
-<tr>
-<td>पाण्याचा स्रोत</td>
-<td>
+<label>पाण्याचा स्रोत</label>
 <select id="pani">
 <option>नदी</option>
 <option>विहीर</option>
 <option>तलाव</option>
 <option>बोअर</option>
-<option>काळवा</option>
+<option>कालवा</option>
 <option>बंधारा</option>
 </select>
-</td>
-</tr>
 
-<tr>
-<td>ऐतिहासिक माहिती</td>
-<td><textarea id="itihas"></textarea></td>
-</tr>
+<label>ऐतिहासिक माहिती</label>
+<textarea id="itihas"></textarea>
 
-</table>
-
-<button type="button" onclick="saveData()">जतन करा</button>
+<button type="button" onclick="generateReport()">जतन करा</button>
 
 </form>
 
-<br>
-
-<h3>नोंदी</h3>
-
-<table id="dataTable">
-<tr>
-<th>किल्ला</th>
-<th>तालुका</th>
-<th>जिल्हा</th>
-<th>गाव</th>
-<th>वस्ती</th>
-<th>पाणी</th>
-<th>इतिहास</th>
-</tr>
-</table>
+<div class="report" id="reportOutput"></div>
 
 </div>
 
 <script>
-function saveData(){
+function generateReport(){
 
-var table = document.getElementById("dataTable");
-var row = table.insertRow();
+var killa = document.getElementById("killa").value;
+var taluka = document.getElementById("taluka").value;
+var jilha = document.getElementById("jilha").value;
+var gav = document.getElementById("gav").value;
+var vasti = document.getElementById("vasti").value;
+var pani = document.getElementById("pani").value;
+var itihas = document.getElementById("itihas").value;
 
-row.insertCell(0).innerHTML = document.getElementById("killa").value;
-row.insertCell(1).innerHTML = document.getElementById("taluka").value;
-row.insertCell(2).innerHTML = document.getElementById("jilha").value;
-row.insertCell(3).innerHTML = document.getElementById("gav").value;
-row.insertCell(4).innerHTML = document.getElementById("vasti").value;
-row.insertCell(5).innerHTML = document.getElementById("pani").value;
-row.insertCell(6).innerHTML = document.getElementById("itihas").value;
+var reportText = `
+<b>दुर्ग संवर्धन अभियान</b><br>
+प्राथमिक माहिती अहवाल<br><br>
+
+किल्ल्याचे नाव : ${killa} <br>
+तालुका : ${taluka} <br>
+जिल्हा : ${jilha} <br>
+जवळचे गाव : ${gav} <br>
+वस्ती आहे का : ${vasti} <br>
+पाण्याचा स्रोत : ${pani} <br>
+ऐतिहासिक माहिती : ${itihas} <br><br>
+
+दिनांक : ____________________ <br>
+अधिकाऱ्याची सही : ____________________
+`;
+
+document.getElementById("reportOutput").innerHTML = reportText;
 
 document.getElementById("durgForm").reset();
 }
@@ -164,7 +145,3 @@ document.getElementById("durgForm").reset();
 
 </body>
 </html>
-
-
-
-
